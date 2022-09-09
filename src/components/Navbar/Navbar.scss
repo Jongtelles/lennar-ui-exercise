@@ -86,7 +86,7 @@
 }
 
 // this could also be accomplished by adding a mobile class based on a prop passed from the App component, but I decided to go with media queries for this implementation in order for clear separation between desktop and mobile styles and to reduce reliance on JS in exchange for extra HTML elements
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 425px) {
   .navbar {
     padding: 24px 20px 40px 16px;
     width: 100%;
