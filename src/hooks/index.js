@@ -1,3 +1,5 @@
+// I ended up using css media queries instead of this hook, but wanted to provide it as a possible alternative
+
 import { useState, useLayoutEffect } from "react";
 
 function getWindowDimensions() {
