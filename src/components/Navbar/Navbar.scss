@@ -1,0 +1,169 @@
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 24px 25px 0 25px;
+  margin: 0 auto;
+  max-width: 1280px;
+
+  .logo {
+    cursor: pointer;
+  }
+
+  .hamburger {
+    border: none;
+    background: transparent;
+    margin-left: auto;
+    display: none;
+  }
+
+  .links-container {
+    list-style: none;
+    display: flex;
+    margin-left: 40px;
+
+    .mobile-nav-menu-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 22px;
+
+      .mobile-logo {
+        margin-left: 21px;
+      }
+      .close-menu-icon {
+        margin-right: 26px;
+      }
+    }
+
+    .nav-link {
+      margin: 0 16px;
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 24px;
+      cursor: pointer;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+
+    .mobile-nav-btn {
+      display: none;
+    }
+    .mobile-nav-text-link {
+      display: none;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+
+    .text-link {
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      margin-right: 24px;
+      cursor: pointer;
+    }
+  }
+
+  .mobile-nav-backdrop {
+    pointer-events: none;
+    opacity: 0;
+    background: #6b7280;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 500ms ease-in-out;
+  }
+}
+
+// this could also be accomplished by adding a mobile class based on a prop passed from the App component, but I decided to go with media queries for this implementation in order for clear separation between desktop and mobile styles and to reduce reliance on JS in exchange for extra HTML elements
+@media screen and (max-width: 415px) {
+  .navbar {
+    padding: 24px 20px 40px 16px;
+    width: 100%;
+
+    .hamburger {
+      display: block;
+    }
+
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: #ffffff;
+      border-radius: 8px;
+      height: 0;
+      opacity: 0;
+      z-index: -1;
+      width: calc(100vw - 16px);
+      transition: all 500ms ease-in-out;
+
+      &.expanded {
+        opacity: 1;
+        height: 392px;
+        z-index: 1;
+      }
+
+      &.closed {
+        transition: all 300ms ease-in-out;
+      }
+
+      .mobile-nav-menu-header {
+        display: flex;
+      }
+
+      .nav-link {
+        color: #374151;
+        margin: 10px 0 10px 20px;
+
+        &:first-of-type {
+          margin: 28px 0 10px 20px;
+        }
+      }
+
+      .mobile-nav-btn {
+        display: block;
+        width: calc(100% - 40px);
+        margin: 22px auto 0;
+      }
+      .mobile-nav-text-link {
+        display: block;
+        color: #6b7280;
+        margin: 24px auto 0;
+
+        .black {
+          color: #111827;
+        }
+      }
+    }
+
+    .btn-container {
+      display: none;
+      .link {
+      }
+    }
+
+    .mobile-nav-backdrop {
+      &.expanded {
+        pointer-events: initial;
+        opacity: 0.75;
+      }
+
+      &.closed {
+        transition: all 300ms ease-in-out;
+      }
+    }
+  }
+}
